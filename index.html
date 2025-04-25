@@ -105,7 +105,35 @@
         .pay-btn:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+                .popup {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .popup img {
+            margin-top: 10%;
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
         .hamburger {
             display: none;
             cursor: pointer;
@@ -447,9 +475,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="navbar-right">
-                <a href="upi://pay?pa=7379419250@ybl&pn=Akhilesh%20soni&mc=0000&mode=02&purpose=00" class="pay-btn">
+                <a href="#" class="pay-btn" onclick="openPopup()">
                     <i class="fas fa-credit-card"></i> Pay
-                </a>                           
+                </a>
+
+                <!-- Popup container -->
+                <div id="popup" class="popup">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <img src="pay.jpg" alt="Popup Image">
+                </div>
                 <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -463,13 +497,13 @@
             <h2>Today's Live Rates</h2>
             <div class="rates-container">
                 <div class="rate-card">
-                    <h3>Gold (22K)</h3>
-                    <div class="rate-value" id="gold-rate">₹ -- /10g</div>
+                    <h3>Gold</h3>
+                    <div class="rate-value" id="gold-rate">₹ -- </div>
                     <p>Last Updated: <span id="gold-updated">24-Apr-2025 09:00 AM</span></p>
                 </div>
                 <div class="rate-card">
                     <h3>Silver</h3>
-                    <div class="rate-value" id="silver-rate">₹ -- /kg</div>
+                    <div class="rate-value" id="silver-rate">₹ -- </div>
                     <p>Last Updated: <span id="silver-updated">24-Apr-2025 09:00 AM</span></p>
                 </div>
             </div>
@@ -671,6 +705,13 @@
                 }
             });
         });
+                function openPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
     </script>
 </body>
 </html>
